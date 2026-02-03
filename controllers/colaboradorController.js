@@ -10,19 +10,30 @@ const getColaboradores = async (req, res) => {
     }
 }
 
+
 const createColaborador = async (req, res) => {
-    const {nombre, apellido, direccion, edad, profesion, estadocivil} = req.body
+    const { nombre, apellido, direccion, edad, profesion, estadocivil } = req.body
 
     if (!nombre || !apellido || !edad) {
-        return res.status(400).json({ message: 'Nombre, Apellido y Edad son obligatorios'})
+        return res.status(400).json({ message: 'Faltan datos obligatorios' })
     }
 
     try {
+        const [existe] = await pool.query(
+            'SELECT * FROM COLABORADOR WHERE NOMBRE = ? AND APELLIDO = ?',
+            [nombre, apellido]
+        )
+
+        if (existe.length > 0) {
+            return res.status(409).json({ message: 'El colaborador ya está registrado' })
+        }
+
         const [result] = await pool.query(
             'INSERT INTO COLABORADOR (NOMBRE, APELLIDO, DIRECCION, EDAD, PROFESION, ESTADOCIVIL) VALUES (?, ?, ?, ?, ?, ?)',
             [nombre, apellido, direccion, edad, profesion, estadocivil]
         )
-        res.status(201).json({ id: result.insertId, message: 'Colaborador creado'})
+        res.status(201).json({ id: result.insertId, message: 'Colaborador creado' })
+
     } catch (error) {
         res.status(500).json({ error: error.message })
     }

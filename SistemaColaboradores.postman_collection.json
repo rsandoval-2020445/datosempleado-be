@@ -1,0 +1,113 @@
+{
+  "info": {
+    "_postman_id": "21672495-8ff4-447e-a910-cb97313397fa",
+    "name": "SistemaColaboradores",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "37951952"
+  },
+  "item": [
+    {
+      "name": "create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"{{nombre}}\",\r\n  \"apellido\": \"{{apellido}}\",\r\n  \"direccion\": \"{{direccion}}\",\r\n  \"edad\": {{edad}},\r\n  \"profesion\": \"{{profesion}}\",\r\n  \"estadocivil\": \"{{estadocivil}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/colaborador",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "colaborador"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/colaborador",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "colaborador"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Test Modificado\",\r\n  \"apellido\": \"User\",\r\n  \"direccion\": \"Calle Nueva\",\r\n  \"edad\": 30,\r\n  \"profesion\": \"Senior Tester\",\r\n  \"estadocivil\": \"Casado\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/colaborador/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "colaborador",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Test Modificado\",\r\n  \"apellido\": \"User\",\r\n  \"direccion\": \"Calle Nueva\",\r\n  \"edad\": 30,\r\n  \"profesion\": \"Senior Tester\",\r\n  \"estadocivil\": \"Casado\"\r\n}\r\n"
+        },
+        "url": {
+          "raw": "http://localhost:3000/colaborador/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "colaborador",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
